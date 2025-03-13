@@ -171,6 +171,25 @@ export const industries = [
       ],
     },
     {
+      id: "Psychology",
+      name: "Psychology",
+      subIndustries: [
+        "Brain science and cognitive psychology",
+        "Climate and environmental psychology",
+        "Clinical psychology",
+        "Counseling psychology",
+        "Developmental psychology",
+        "Experimental psychology",
+        "Forensic and public service psychology",
+        "Health psychology",
+        "Human factors and engineering psychology",
+        "Industrial and organizational psychology",
+        "Psychology of teaching and learning",
+        "Quantitative psychology",
+        "Social psychology",
+      ],
+    },
+    {
       id: "telecom",
       name: "Telecommunications",
       subIndustries: [
