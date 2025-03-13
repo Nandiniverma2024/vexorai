@@ -45,7 +45,7 @@ const HeroSection = () => {
             </div>
 
             <div>
-                <Link href="/dashboard">
+                <Link href="/onboarding">
                     <Button size="lg" className="px-8">Get Started</Button>
                 </Link>
             </div>
