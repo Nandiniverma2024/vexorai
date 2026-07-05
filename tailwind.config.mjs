@@ -82,5 +82,5 @@ export default {
   		}
   	}
   },
-  pplugins: [tailwindcssAnimate],
+  plugins: [tailwindcssAnimate],
 };
