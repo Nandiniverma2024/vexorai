@@ -128,6 +128,10 @@ const ResumeBuilder = ({ initialContent }) => {
       try {
         // get that element from which we will be generating our pdf
         const element = document.getElementById("resume-pdf");
+        if (!element) {
+          toast.error("Resume preview not ready. Try switching to preview tab once.");
+          return;
+        }
 
         const options = {
           margin: [15,15],
@@ -396,7 +400,7 @@ const ResumeBuilder = ({ initialContent }) => {
                   preview={resumeMode}
                 />
               </div>
-              <div className="hidden">
+              {/* <div className="hidden"> */}
                 <div id="resume-pdf">
                   <MarkdownEditor.Markdown 
                     source={previewcontent} 
@@ -406,7 +410,7 @@ const ResumeBuilder = ({ initialContent }) => {
                     }}
                   />
                 </div>
-              </div>
+              {/* </div> */}
             </TabsContent>
         </Tabs>
 

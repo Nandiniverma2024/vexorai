@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { onboardingSchema } from "@/app/lib/schema";
 import { useEffect, useState } from "react";
+// import initialData from "@/data/initialData";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "@/components/ui/select";
@@ -16,7 +17,7 @@ import { updateUser } from "@/actions/user";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
-const OnboardingForm = ({ industries }) => {
+const OnboardingForm = ({ industries, initialData }) => {
     const[selectedIndustry, setSelectedIndustry]=useState(null);
     
     const router = useRouter();// This help us to navigate some other page
@@ -35,6 +36,11 @@ const OnboardingForm = ({ industries }) => {
         watch,
     } = useForm({
         resolver: zodResolver(onboardingSchema),
+        defaultValues: {
+          experience: initialData?.experience?.toString() || "",
+          skills: initialData?.skills?.join(", ") || "",
+          bio: initialData?.bio || "",
+        },
     });
 
     const onSubmit = async(values) => {

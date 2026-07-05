@@ -63,7 +63,7 @@ export async function updateUser(data){
                 return { updateUser, industryInsight };
             },
             {
-                timeOut: 10000, //dafault 5000
+                timeout: 10000, //dafault 5000
             }
         );
 
@@ -90,6 +90,7 @@ export async function getUserOnboardingStatus(){
 
     if(!user) throw new Error("User not found");// If user is not present in our database then throw error 
 
+    
     try {
         const user = await db.user.findUnique({// Fetch the user
             where:{
@@ -109,3 +110,31 @@ export async function getUserOnboardingStatus(){
         throw new Error("Failed to check onboarding status");
     }
 }
+
+
+// New server action for fetching existing profile data (for editing)
+
+export async function getUserProfile() {
+  const { userId } = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  try {
+    const user = await db.user.findUnique({
+      where: { clerkUserId: userId },
+    });
+
+    if (!user) throw new Error("User not found");
+
+    return {
+      experience: user.experience,
+      skills: user.skills,
+      bio: user.bio,
+    };
+  } catch (error) {
+    console.error("Error fetching user profile:", error.message);
+    throw new Error("Failed to fetch user profile");
+  }
+}
+
+
+
