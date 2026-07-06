@@ -1,3 +1,6 @@
+export const maxDuration = 60;
+
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"

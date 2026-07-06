@@ -1,7 +1,5 @@
 "use server";
 
-export const maxDuration = 60;
-
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/prisma";
 import { GoogleGenerativeAI } from "@google/generative-ai";
